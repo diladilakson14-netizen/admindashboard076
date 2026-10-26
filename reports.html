@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lanka Fresh Mart 2026 sales reports">
+  <title>Lanka Fresh Mart | Reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme" data-page="reports">
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="brand" aria-label="Lanka Fresh Mart dashboard home">
+        <span class="brand-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+        <span class="brand-text"><span class="brand-name">Lanka Fresh Mart</span><span class="brand-subtitle">Retail Analytics</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Dashboard</a></li>
+        <li><a href="sales.html" class="nav-link"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Sales</a></li>
+        <li><a href="reports.html" class="nav-link active" aria-current="page"><i class="fa-solid fa-table" aria-hidden="true"></i> Reports</a></li>
+        <li><a href="settings.html" class="nav-link"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme" title="Toggle dark or light theme"><i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i></button>
+        <div class="user-profile" aria-label="Signed in as Kasun Perera, Regional Manager">
+          <span class="user-avatar" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span>
+          <span class="user-info"><span class="user-name">Admin</span>
+        </div>
+        <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="dashboard-header" aria-labelledby="reports-title">
+      <div class="header-text">
+        <h1 id="reports-title">Sales Reports</h1>
+        <p id="reports-status">Detailed monthly, branch, and quarterly reports for the 2026 reporting year.</p>
+      </div>
+      <div class="header-controls">
+        <label for="period-filter" class="control-label">Report period:</label>
+        <select id="period-filter" class="period-select" aria-label="Select report period">
+          <option value="all">Full year (Jan–Dec)</option>
+          <option value="q1">Q1 (Jan–Mar)</option>
+          <option value="q2">Q2 (Apr–Jun)</option>
+          <option value="q3">Q3 (Jul–Sep)</option>
+          <option value="q4">Q4 (Oct–Dec)</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Report summary metrics">
+      <article class="kpi-card"><span class="kpi-icon kpi-icon-revenue" aria-hidden="true"><i class="fa-solid fa-sack-dollar"></i></span><div class="kpi-content"><span class="kpi-label">Report Revenue</span><strong class="kpi-value" id="reports-total-revenue">--</strong><span class="kpi-meta" id="reports-revenue-meta">LKR '000</span></div></article>
+      <article class="kpi-card"><span class="kpi-icon kpi-icon-units" aria-hidden="true"><i class="fa-solid fa-boxes-stacked"></i></span><div class="kpi-content"><span class="kpi-label">Report Units</span><strong class="kpi-value" id="reports-total-units">--</strong><span class="kpi-meta" id="reports-units-meta">Selected-period volume</span></div></article>
+      <article class="kpi-card"><span class="kpi-icon kpi-icon-month" aria-hidden="true"><i class="fa-solid fa-calendar-check"></i></span><div class="kpi-content"><span class="kpi-label">Best Month</span><strong class="kpi-value" id="reports-best-month">--</strong><span class="kpi-meta" id="reports-best-month-meta">Highest revenue</span></div></article>
+      <article class="kpi-card"><span class="kpi-icon kpi-icon-branch" aria-hidden="true"><i class="fa-solid fa-store"></i></span><div class="kpi-content"><span class="kpi-label">Best Branch</span><strong class="kpi-value" id="reports-best-branch">--</strong><span class="kpi-meta" id="reports-best-branch-meta">Selected-period leader</span></div></article>
+    </section>
+
+    <section class="charts-grid" aria-label="Report revenue comparison">
+      <article class="chart-card wide-chart">
+        <div class="chart-card-header"><div><h2>Monthly Revenue Comparison</h2><p class="chart-subtitle" id="reports-chart-subtitle">Monthly revenue in LKR '000</p></div><span class="chart-badge">Report chart</span></div>
+        <div class="chart-canvas-wrapper"><canvas id="reportsRevenueChart" aria-label="Monthly report revenue comparison chart"></canvas></div>
+      </article>
+    </section>
+
+    <section class="data-tables-grid" aria-label="Detailed reports">
+      <article class="table-card">
+        <h2>Monthly Sales Report</h2>
+        <p id="reports-monthly-caption">All twelve monthly records and their sales mix.</p>
+        <div class="table-responsive"><table class="data-table"><thead><tr><th>Month</th><th>Revenue (LKR '000)</th><th>Units Sold</th><th>Revenue / Unit</th></tr></thead><tbody id="reports-monthly-table"></tbody></table></div>
+      </article>
+      <article class="table-card">
+        <h2>Branch Performance Report</h2>
+        <p id="reports-branch-caption">Branch revenue comparisons for the selected period.</p>
+        <div class="table-responsive"><table class="data-table"><thead><tr><th>Branch</th><th>Revenue (LKR '000)</th><th>Revenue Share</th></tr></thead><tbody id="reports-branch-table"></tbody></table></div>
+      </article>
+    </section>
+
+    <section class="table-card" aria-labelledby="annual-summary-title">
+      <h2 id="annual-summary-title">2026 Annual Summary by Quarter</h2>
+      <p>This annual summary always reflects all twelve months from the shared dataset.</p>
+      <div class="table-responsive"><table class="data-table"><thead><tr><th>Quarter</th><th>Revenue (LKR '000)</th><th>Units Sold</th><th>Average Monthly Revenue</th><th>Share of Annual Revenue</th></tr></thead><tbody id="reports-quarter-table"></tbody></table></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© 2026 Lanka Fresh Mart • All Rightes </p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

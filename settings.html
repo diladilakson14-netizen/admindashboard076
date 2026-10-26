@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lanka Fresh Mart dashboard settings">
+  <title>Lanka Fresh Mart | Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme" data-page="settings">
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="brand" aria-label="Lanka Fresh Mart dashboard home">
+        <span class="brand-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+        <span class="brand-text"><span class="brand-name">Lanka Fresh Mart</span><span class="brand-subtitle">Retail Analytics</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Dashboard</a></li>
+        <li><a href="sales.html" class="nav-link"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Sales</a></li>
+        <li><a href="reports.html" class="nav-link"><i class="fa-solid fa-table" aria-hidden="true"></i> Reports</a></li>
+        <li><a href="settings.html" class="nav-link active" aria-current="page"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark or light theme" title="Toggle dark or light theme"><i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i></button>
+        <div class="user-profile" aria-label="Signed in as Admin">
+          <span class="user-avatar" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span>
+          <span class="user-info"><span class="user-name">Admin</span>
+        </div>
+        <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="dashboard-header" aria-labelledby="settings-title">
+      <div class="header-text">
+        <h1 id="settings-title">Dashboard Settings</h1>
+        <p>Personalize the appearance and default reporting context for this browser.</p>
+      </div>
+      <span class="status-pill"><i class="fa-solid fa-gear" aria-hidden="true"></i>&nbsp; Stored locally</span>
+    </section>
+
+    <section class="settings-grid" aria-label="Dashboard settings">
+      <article class="content-card">
+        <h2>Theme Preferences</h2>
+        <p>Choose a theme. Your selection is used on every Lanka Fresh Mart page in this browser.</p>
+        <div class="setting-row">
+          <div><h3>Colour mode</h3><p>The dashboard uses the existing purple and blue identity in both modes.</p></div>
+          <div class="theme-choice-group" role="group" aria-label="Choose colour theme">
+            <button class="theme-choice" type="button" data-theme-choice="dark"><i class="fa-solid fa-moon" aria-hidden="true"></i> Dark</button>
+            <button class="theme-choice" type="button" data-theme-choice="light"><i class="fa-solid fa-sun" aria-hidden="true"></i> Light</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="content-card">
+        <h2>Dashboard Configuration</h2>
+        <p>Set the period selected when you open the Dashboard, Sales, or Reports page.</p>
+        <div class="setting-row">
+          <div><h3>Default reporting period</h3><p>Filters can still be changed independently on each page.</p></div>
+          <select class="form-select" id="settings-default-period" aria-label="Default reporting period">
+            <option value="all">Full year (Jan–Dec)</option>
+            <option value="q1">Q1 (Jan–Mar)</option>
+            <option value="q2">Q2 (Apr–Jun)</option>
+            <option value="q3">Q3 (Jul–Sep)</option>
+            <option value="q4">Q4 (Oct–Dec)</option>
+          </select>
+        </div>
+        <div class="button-row"><button class="button" type="button" id="save-settings"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save preferences</button></div>
+        <div class="status-message info" id="settings-status" role="status"></div>
+      </article>
+
+      <article class="content-card">
+        <h2>Data Management</h2>
+        <p>Imported sales data is browser-only. Resetting returns every page to the supplied January–December 2026 illustrative dataset.</p>
+        <div class="button-row"><a class="button secondary" href="import.html"><i class="fa-solid fa-file-import" aria-hidden="true"></i> Import a CSV</a><button class="button danger" type="button" id="reset-data"><i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i> Reset sample data</button></div>
+        <div class="status-message info" id="data-reset-status" role="status"></div>
+      </article>
+
+      <article class="content-card">
+        <h2>About This Dashboard</h2>
+        <p>The site is a static HTML, CSS, and vanilla JavaScript dashboard. Charts are provided by Chart.js; no backend, database, or user account is connected.</p>
+        <div class="summary-grid">
+          <div class="summary-item"><span>Reporting year</span><strong>2026</strong></div>
+          <div class="summary-item"><span>Branches</span><strong>3</strong></div>
+          <div class="summary-item"><span>Data months</span><strong>12</strong></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© 2026 Lanka Fresh Mart • All Rightes </p></footer>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
